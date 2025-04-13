@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 30 144 255; /* dodger blue */
+    --color-secondary: 138 43 226; /* blue violet */
+    --color-accent: 255 69 0; /* orange-red */
+    --color-text: 255 255 255; /* pure white */
+  }
+
+  body {
+    @apply bg-[#0A0A0A] text-white;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[#0A0A0A];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-[#1E90FF] to-[#8A2BE2] rounded-full;
+  }
+}
+
+@layer components {
+  .glow {
+    text-shadow: 0 0 30px rgba(30, 144, 255, 0.8),
+                 0 0 50px rgba(30, 144, 255, 0.6),
+                 0 0 70px rgba(30, 144, 255, 0.4);
+  }
+
+  .neon-border {
+    box-shadow: 0 0 25px rgba(30, 144, 255, 0.6),
+                inset 0 0 25px rgba(30, 144, 255, 0.4);
+  }
+
+  .grid-background {
+    background-image: linear-gradient(rgba(30, 144, 255, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(30, 144, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .achievement-card {
+    @apply relative bg-white/5 backdrop-blur-sm rounded-xl p-6 
+           transition-all duration-300 border border-[#1E90FF]/10
+           hover:bg-white/10 hover:border-[#1E90FF]/20;
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.1);
+  }
+
+  .achievement-card:hover {
+    box-shadow: 0 0 30px rgba(30, 144, 255, 0.2);
+  }
+
+  .neon-button {
+    @apply relative px-8 py-3 rounded-full bg-gradient-to-r 
+           from-[#1E90FF]/90 to-[#8A2BE2]/90 text-white font-bold 
+           overflow-hidden transition-all duration-300 hover:scale-105 
+           backdrop-blur-sm border border-white/20;
+    box-shadow: 0 0 25px rgba(30, 144, 255, 0.4);
+  }
+
+  .neon-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-[#FF4500]/30 to-[#FF4500]/20 opacity-0 
+           transition-opacity duration-300;
+  }
+
+  .neon-button:hover::before {
+    @apply opacity-40;
+  }
+
+  .neon-button:hover {
+    @apply border-[#FF4500]/40;
+    box-shadow: 0 0 35px rgba(255, 69, 0, 0.6);
+  }
+
+  .skill-hexagon {
+    @apply relative bg-white/5 backdrop-blur-sm p-6 
+           transition-all duration-300 border border-[#1E90FF]/10
+           hover:bg-white/10 hover:border-[#1E90FF]/20;
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.1);
+  }
+
+  .skill-hexagon:hover {
+    box-shadow: 0 0 30px rgba(30, 144, 255, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
